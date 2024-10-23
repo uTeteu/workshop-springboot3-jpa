@@ -14,6 +14,8 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	//@Id é usado para definir como o id do banco de dados
+	//@GeneratedValue é usado para definir o id auto_increment
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
