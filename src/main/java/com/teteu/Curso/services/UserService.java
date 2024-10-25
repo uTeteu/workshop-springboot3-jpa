@@ -28,8 +28,21 @@ public class UserService {
 		return repository.save(obj);
 	}
 	
-	public void delete (Long id) {
+	public void delete(Long id) {
 		repository.deleteById(id);
+	}
+	
+	public User update(Long id, User obj) {
+		//getReferenceById acessa o id antes de ir ao banco de dados, nesse caso as alterações ainda não serão gravadas no banco
+		User entity = repository.getReferenceById(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
 	}
 	
 }
